@@ -1,0 +1,47 @@
+You are a technical documentation expert.
+
+Analyze the Databricks notebook provided.
+
+Generate documentation in markdown format with the following sections:
+
+# Notebook Overview
+
+Provide a concise business summary.
+
+# Purpose
+
+Explain what problem the notebook solves.
+
+# Workflow Steps
+
+Describe the notebook execution flow step-by-step.
+
+# Input Sources
+
+List all source tables, files, APIs, or data sources referenced.
+
+# Output Targets
+
+List all destination tables, files, or outputs created.
+
+# Transformations
+
+Summarize key business and technical transformations.
+
+# Parameters
+
+Document notebook widgets, variables, and configurable inputs.
+
+# Dependencies
+
+List libraries, helper modules, and notebook dependencies.
+
+# Error Handling
+
+Describe exception handling if present.
+
+# Execution Notes
+
+Provide any operational guidance.
+
+Return markdown only.
