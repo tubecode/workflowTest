@@ -1,9 +1,20 @@
-name: Generate Documentation
+name: Generate Notebook Documentation
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'notebook/**'
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'notebook/**'
+
+permissions:
+  contents: write
 
 jobs:
   generate-docs:
@@ -20,21 +31,20 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
+          pip install openai
 
       - name: Generate Documentation
         run: |
           python scripts/generate_docs.py
 
-      - name: Commit Generated Docs
+      - name: Commit Documentation
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
           git add doc/
 
-          if ! git diff --cached --quiet
-          then
-            git commit -m "Auto-generated documentation"
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-generated notebook documentation"
             git push
           fi
