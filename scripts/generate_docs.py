@@ -33,11 +33,11 @@ def generate_documentation(client: genai.Client, prompt_text: str, source_path: 
     source_content = source_path.read_text(encoding="utf-8")
     response = client.models.generate_content(
         model="gemini-3.6-flash",
-        temperature=0.2,
         contents=[
             prompt_text,
             f"### Source file: {source_path.name}\n\n{source_content}",
         ],
+        config={"temperature": 0.2},
     )
     return response.text
 
