@@ -1,17 +1,7 @@
 name: Generate Notebook Documentation
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'notebook/**'
-
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'notebook/**'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -31,9 +21,11 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install openai
+          pip install google-genai
 
       - name: Generate Documentation
+        env:
+          GENAI_API_KEY: ${{ secrets.GENAI_API_KEY }}
         run: |
           python scripts/generate_docs.py
 
